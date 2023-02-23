@@ -17,7 +17,7 @@ const styles = {
         alignItems: "center",
     },
     notificacion: {
-        backgroundColor: "red",
+        backgroundColor: "black",
         color: "white",
         borderRadius: "50%",
         width: 20,

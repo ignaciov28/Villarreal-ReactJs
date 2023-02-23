@@ -1,27 +1,28 @@
-const viewport = {
-    width: document.documentElement.clientWidth,
-    height: document.documentElement.clientHeight
-}
 
 export const styles = {
-    container:{
-        display: viewport.width > 500 ? "flex" : "none",
-        flexDirection: "row",
+    container: {
+        display: "flex",
         justifyContent: "space-between",
-        alingItems: "center",
+        alignItems: "center",
         width: "100%",
-        backgroundColor: "black",
-    },
-    img: {
-        marginTop: 20,
-        marginLeft: 20,
-        width: 100,
-        height: 20,
-    },
-
-    h1: {
-        color: "white",
+        backgroundColor: "red",
         fontSize: 20,
-        marginTop: 20,       
-    }
-}
+        padding: 2,
+    },
+    imagenes: {
+        height: 20,
+        marginLeft: 15,
+    },
+    nav: {
+        
+    },
+    categorias: {
+        textDecoration: 'none',
+        color: 'white',
+        border: 'none',
+        marginDown: 20,
+    },
+    separacionCategorias: {
+        marginRight: 20,
+    },
+};
