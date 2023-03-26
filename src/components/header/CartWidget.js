@@ -1,13 +1,15 @@
-import React from "react";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import React, { useContext } from "react";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { CartContext } from "../../context/CartContext";
 
-const CartWidget = () => {
+export const CartWidget = () => {
+    const { totals } = useContext(CartContext);
     return (
-        <div style={styles.contenedorCart}>
-            <ShoppingCartIcon fontSize="large" style={styles.carrito} />
-            <div style={styles.notificacion}>3</div>
-        </div>
-    )
+    <div style={styles.contenedorCart}>
+        <ShoppingCartIcon fontSize="large" style={styles.carrito} />
+        {totals.qty > 0 && <p>{totals.qty}</p>}
+    </div>
+    );
 };
 
 const styles = {
@@ -24,9 +26,9 @@ const styles = {
         height: 20,
         textAlign: "center",
         fontSize: 12,
-        marginLeft: -10,
+        marginLeft: -30,
         marginTop: -10,
-        marginRight: 20,
+        marginRight: 40,
     },
     carrito: {
         marginTop: 12,

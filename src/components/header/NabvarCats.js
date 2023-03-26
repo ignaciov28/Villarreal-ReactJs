@@ -2,37 +2,43 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const NavbarCats = () => {
-const categorias = [
-    { id: 1, name: "Electronica", route:'/categories/electronics' },
-    { id: 2, name: "Joyeria", route:'/categories/jewelery'},
-    { id: 3, name: "Ropa Hombre", route:"/categories/men's clothing"},
-    { id: 4, name: "Ropa Mujer", route:"/categories/women's clothing"}
-];
+    const categorias = [
+    { id: 1, name: "Electronics", route: "/categories/electronics" },
+    { id: 2, name: "Jewelery", route: "/categories/jewelery" },
+    { id: 3, name: "Men's Clothing", route: "/categories/men's clothing" },
+    { id: 4, name: "Women's Clothing", route: "/categories/women's clothing" },
+    ];
 
-return (
+    return (
     <nav style={styles.nav}>
-    {categorias.map((category) => {
+        {categorias.map((category) => {
         return (
-    <NavLink key={category.id} style={styles.categorias} className="separacionCategorias" to={category.route}>
+            <NavLink
+            key={category.id}
+            style={styles.categorias}
+            className="separacionCategorias"
+            to={category.route}
+            >
             {category.name}
-    </NavLink>
+            </NavLink>
         );
-    })}
+        })}
     </nav>
-);
+    );
 };
 
 export const styles = {
     nav: {
-        marginTop: 10,
-        padding: 10,
+    marginTop: 10,
+    padding: 10,
     },
     categorias: {
-        textDecoration: 'none',
-        color: 'white',
-        border: 'none',
-        marginRight: 20,
+    textDecoration: "none",
+    color: "white",
+    border: "none",
+    marginRight: 20,
     },
-    }
+};
 
-export default NavbarCats
+export default NavbarCats;
+

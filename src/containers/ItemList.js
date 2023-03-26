@@ -1,42 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import Item from "./Item";
-import ItemDetail from "./ItemDetail";
-
-const styles = {
-container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'center',
-    maxWidth: 1200,
-    margin: '0 auto',
-},
-};
 
 const ItemList = ({ products }) => {
-const [selectedProduct, setSelectedProduct] = useState(null);
-
-const handleClick = (product) => {
-    setSelectedProduct(product);
-};
-
-return (
-    <>
-    {selectedProduct ? (
-        <ItemDetail product={selectedProduct} />
-    ) : (
+    return (
         <div style={styles.container}>
-        {products.map((product) => (
-            <Item
-            key={product.id}
-            product={product}
-            onClick={() => handleClick(product)}
-            />
-        ))}
+            {products.map((product) =>
+                <Item key={product.id} product={product} />
+            )}
         </div>
-    )}
-    </>
-);
-};
-
+    )
+}
 export default ItemList;
+
+const styles = {
+    container:{
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    flexWrap: "wrap",
+    }
+}

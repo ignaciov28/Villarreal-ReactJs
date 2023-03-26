@@ -1,0 +1,81 @@
+import React, { useState } from "react";
+
+const ItemCount = ({ onAdd, stock = 5 }) => {
+    const [count, setCount] = useState(1);
+
+    const handlerClickAdd = () => {
+    if (count < stock) {
+        setCount(count + 1);
+    }
+    };
+
+    const handlerClickSubtrack = () => {
+    if (count > 1) {
+        setCount(count - 1);
+    }
+    };
+
+    return (
+    <div style={styles.container}>
+        <div style={styles.containerButtons}>
+        <button style={styles.button} onClick={() => handlerClickSubtrack()}>
+            -
+        </button>
+        <h2 style={styles.counter}>{count}</h2>
+        <button style={styles.button} onClick={() => handlerClickAdd()}>
+            +
+        </button>
+        </div>
+        <button style={styles.buttonAdd} onClick={() => onAdd(count)}>
+        Agregar al carrito
+        </button>
+    </div>
+    );
+};
+
+const styles = {
+    container: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: "20px 0px",
+    },
+    button: {
+    width: "40px",
+    height: "40px",
+    borderRadius: "50%",
+    backgroundColor: "black",
+    color: "white",
+    fontSize: "20px",
+    fontWeight: "bold",
+    margin: "0px 10px",
+    border: "none",
+    },
+    counter: {
+    margin: "0px 20px",
+    fontWeight: "bold",
+    fontSize: "22px",
+    },
+    containerButtons: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    },
+    buttonAdd: {
+    width: "60%",
+    height: "50px",
+    borderRadius: "5px",
+    backgroundColor: "#2196f3",
+    color: "white",
+    fontSize: "16px",
+    fontWeight: "bold",
+    margin: "10px",
+    border: "none",
+    cursor: "pointer",
+    transition: "all 0.3s ease",
+    },
+};
+
+export default ItemCount;

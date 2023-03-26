@@ -1,28 +1,50 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import ItemDetail from "./ItemDetail";
+import { useParams } from "react-router-dom";
+import {db} from "./../firebase/firebase";
+import { doc, getDoc, collection } from "firebase/firestore";
 
-const ItemDetailContainer = ({ match }) => {
-const [product, setProduct] = useState(null);
-const [loading, setLoading] = useState(true);
 
-useEffect(() => {
-    setLoading(true);
-    fetch(`https://fakestoreapi.com/products/${match.params.id}`)
-    .then((response) => response.json())
-    .then((data) => {
-        setProduct(data);
+export const ItemDetailContainer = () => {
+    const [product, setProduct] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const { id } = useParams();
+
+    useEffect(() => {
+    const productsCollection = collection(db,'products');
+    const refDoc = doc(productsCollection,id)
+    getDoc(refDoc).then(
+        (data)=>{
+        setProduct({
+            id:data.id,
+            ...data.data(),
+        });
+        }
+    )
+    .finally(()=>{ 
         setLoading(false);
     })
-    .catch((error) => console.log(error));
-}, [match.params.id]);
+    },[]);
 
-return loading ? (
-    <div>Loading...</div>
-) : (
-    <div>
-    <ItemDetail product={product} />
-    </div>
-);
+    return (
+        
+    <>
+        {loading ? (
+        <h1>Cargando...</h1>
+        ) : (
+        <div style={styles.container}>
+            <ItemDetail product={product} />
+        </div>
+        )}
+    </>
+    );
 };
 
-export { ItemDetailContainer };
+const styles = {
+    container: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "50px",
+    },
+};

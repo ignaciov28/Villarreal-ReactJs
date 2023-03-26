@@ -1,15 +1,14 @@
-
 import React from "react";
 import Card from "@mui/material/Card";
 import {
-CardContent,
-CardMedia,
-Typography,
-Button,
-CardActionArea,
-CardActions,
+    CardContent,
+    CardMedia,
+    Typography,
+    Button,
+    CardActionArea,
+    CardActions,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import {Link} from 'react-router-dom'
 
 const Item = ({ product }) => {
     return (
@@ -79,7 +78,6 @@ const styles = {
     color: "white",
     padding: "10px 20px",
     margin: "0 auto",
-    textDecoration: "none",
     },
 };
 
